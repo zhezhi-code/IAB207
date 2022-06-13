@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static' , filename='styles/styles.css')}}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,100;8..144,200;8..144,300;8..144,400;8..144,500;8..144,600;8..144,700;8..144,800;8..144,900;8..144,1000&display=swap" rel="stylesheet">
+
+    <title>Gigly - Underground Music Gigs</title>
+</head>
+<body>
+  {% block nav %}
+    <nav class="navbar navbar-expand-lg navbar-dark text-light py-3 fixed-top bg-dark">
+        <div class="d-flex container">
+          <a href="index.html" class="navbar-brand">
+              <img src="/static/image/logowhite-01.png" style="max-height:5vh">
+          </a>
+  
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navmenu"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+  
+          <div class="collapse navbar-collapse" id="navmenu">
+
+            <form class="d-flex justify-content-center mx-auto" style="width:400px">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            </form>
+
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item">
+                <a href="#trending" class="nav-link">Browse</a>
+              </li>
+              <li class="nav-item">
+                <a href="#create" class="nav-link" data-toggle="modal" data-target="#create">Create</a>
+              </li>
+              <li class="nav-item">
+                <a href="#bookings" class="nav-link" data-toggle="modal" data-target="#bookings">Bookings</a>
+              </li>
+              <li class="nav-item">
+                <form class="form-inline px-4">
+                  <button class="btn btn-outline-primary" type="button" data-toggle="modal" data-target="#signupModal">Sign Up</button>
+                  <button class="btn btn-outline-secondary" type="button" data-toggle="modal" data-target="#loginModal">Login</button>
+                </form>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      {% endblock %}
+      <!-- Hero -->
+      <section id="banner" class="d-flex text-light my-auto text-center" style="height:100vh">
+          <div class="container">
+              <h1>What's on in Brisbane.</h1>
+              <p>Browse the best of Brisbane's upcoming underground music gigs.</p>
+              <p>Create an event to let the world know when and where your band is playing.</p>
+              <div class="col-lg-9 mx-auto">
+                <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+                  <a class="btn btn-primary btn-lg px-4 gap-3" href="#trending" role="button">Browse Events</a>
+                  <button type="button" class="btn btn-secondary btn-lg px-4" data-toggle="modal" data-target="#create">Create an event</button>
+                </div>
+              </div>
+          </div>
+      </section>
+
+      <section>
+        <div class="container px-4 pt-5 pb-3" id="trending">
+            <h2 class="pb-2 border-bottom">Trending this week</h2>
+            <div class="row">
+              <div class="col-xl-4 col-lg-4 col-md-6 mb-4">
+                <div class="bg-white rounded shadow-sm">
+                  <a href="eventpage.html">
+                    <img src="./static/image/1ic1200.jpg" alt="" class="img-fluid card-img-top">
+                  </a>
+                  <div class="p-4">
+                    <h5> <a href="eventpage.html" class="text-dark">One Thousand Inch Cats</a></h5>
+                    <p class="small text-muted mb-0">New Single Release: Bathtub Kicking</p>
+                    <div class="d-flex align-items-center justify-content-between rounded-pill bg-light px-3 py-2 mt-4">
+                      <p class="small mb-0"><i class="fa fa-picture-o mr-2"></i><span class="font-weight-bold">18/6/22</span></p>
+                      <div class="badge badge-primary px-3 rounded-pill font-weight-normal">Upcoming</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+        
+              <div class="col-xl-4 col-lg-4 col-md-6 mb-4">
+                <div class="bg-white rounded shadow-sm">
+                  <a href="eventpage.html">
+                    <img src="./static/image/tgb1200.jpg" alt="" class="img-fluid card-img-top">
+                  </a>
+                  <div class="p-4">
+                    <h5> <a href="eventpage.html" class="text-dark">The Greasy Balloons</a></h5>
+                    <p class="small text-muted mb-0">Headlining at the Triffid</p>
+                    <div class="d-flex align-items-center justify-content-between rounded-pill bg-light px-3 py-2 mt-4">
+                      <p class="small mb-0"><i class="fa fa-picture-o mr-2"></i><span class="font-weight-bold">24/5/22</span></p>
+                      <div class="badge badge-success px-3 rounded-pill font-weight-normal">Booked</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+        
+              <div class="col-xl-4 col-lg-4 col-md-6 mb-4">
+                <div class="bg-white rounded shadow-sm">
+                  <a href="eventpage.html">
+                    <img src="./static/image/tdg1200.jpg" alt="" class="img-fluid card-img-top">
+                  </a>
+                  <div class="p-4">
+                    <h5> <a href="eventpage.html" class="text-dark">Deaf Gerbils</a></h5>
+                    <p class="small text-muted mb-0">Prague State of Mind Album Promo Tour</p>
+                    <div class="d-flex align-items-center justify-content-between rounded-pill bg-light px-3 py-2 mt-4">
+                      <p class="small mb-0"><i class="fa fa-picture-o mr-2"></i><span class="font-weight-bold">29/5/22</span></p>
+                      <div class="badge badge-primary px-3 rounded-pill font-weight-normal text-white">Upcoming</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </div>
+      </section>
+
+      <div class="container px-4 pb-5" id="categories">
+        <h2 class="pb-2 border-bottom">Categories</h2>
+        <div class="row row-eq-height">
+          <div class="col-lg-3 col-md-4 col-4 thumb py-2">
+            <div class="category-thumbnail text-center"  style="overflow:hidden">
+              <a href="#">
+                <img  src="./static/image/pop-category.jpg" class="img-fluid category-image-holder">
+              </a>
+              <div class="category-title">
+                <a href="#">
+                  <h2 style="color:white">Pop</h2>
+                </a>
+              </div>
+          </div>
+          </div>
+
+          <div class="col-lg-3 col-md-4 col-4 thumb py-2">
+            <div class="category-thumbnail text-center"  style="overflow:hidden">
+              <a href="#">
+                <img  src="./static/image/rock-category.jpg" class="img-fluid category-image-holder">
+              </a>
+              <div class="category-title">
+                <a href="#">
+                  <h2 style="color:white">Rock</h2>
+                </a>
+              </div>
+          </div>
+          </div>
+
+          <div class="col-lg-3 col-md-4 col-4 thumb py-2">
+            <div class="category-thumbnail text-center"  style="overflow:hidden">
+              <a href="#">
+                <img  src="./static/image/hiphop-category.jpg" class="img-fluid category-image-holder">
+              </a>
+              <div class="category-title">
+                <a href="#">
+                  <h2 style="color:white">Hip Hop</h2>
+                </a>
+              </div>
+          </div>
+          </div>
+
+          <div class="col-lg-3 col-md-4 col-4 thumb py-2">
+            <div class="category-thumbnail text-center"  style="overflow:hidden">
+              <a href="#">
+                <img  src="./static/image/dance-category.jpg" class="img-fluid category-image-holder">
+              </a>
+              <div class="category-title">
+                <a href="#">
+                  <h2 style="color:white">Dance</h2>
+                </a>
+              </div>
+          </div>
+          </div>
+
+          <div class="col-lg-3 col-md-4 col-4 thumb py-2">
+            <div class="category-thumbnail text-center"  style="overflow:hidden">
+              <a href="#">
+                <img  src="./static/image/metal-category.jpg" class="img-fluid category-image-holder">
+              </a>
+              <div class="category-title">
+                <a href="#">
+                  <h2 style="color:white">Heavy Metal</h2>
+                </a>
+              </div>
+          </div>
+          </div>
+
+          <div class="col-lg-3 col-md-4 col-4 thumb py-2">
+            <div class="category-thumbnail text-center"  style="overflow:hidden">
+              <a href="#">
+                <img  src="./static/image/electronic-category.jpg" class="img-fluid category-image-holder">
+              </a>
+              <div class="category-title">
+                <a href="#">
+                  <h2 style="color:white">Electronic</h2>
+                </a>
+              </div>
+          </div>
+          </div>
+
+          <div class="col-lg-3 col-md-4 col-4 thumb py-2">
+            <div class="category-thumbnail text-center"  style="overflow:hidden">
+              <a href="#">
+                <img  src="./static/image/jazz-category.jpg" class="img-fluid category-image-holder">
+              </a>
+              <div class="category-title">
+                <a href="#">
+                  <h2 style="color:white">Jazz</h2>
+                </a>
+              </div>
+          </div>
+          </div>
+
+          <div class="col-lg-3 col-md-4 col-4 thumb py-2">
+            <div class="category-thumbnail text-center"  style="overflow:hidden">
+              <a href="#">
+                <img  src="./static/image/indie-category.jpg" class="img-fluid category-image-holder">
+              </a>
+              <div class="category-title">
+                <a href="#">
+                  <h2 style="color:white">Indie</h2>
+                </a>
+              </div>
+          </div>
+          </div>
+
+          <div class="col-lg-3 col-md-4 col-4 thumb py-2">
+            <div class="category-thumbnail text-center"  style="overflow:hidden">
+              <a href="#">
+                <img  src="./static/image/classical-category.jpg" class="img-fluid category-image-holder">
+              </a>
+              <div class="category-title">
+                <a href="#">
+                  <h2 style="color:white">Classical</h2>
+                </a>
+              </div>
+          </div>
+          </div>
+
+          <div class="col-lg-3 col-md-4 col-4 thumb py-2">
+            <div class="category-thumbnail text-center"  style="overflow:hidden">
+              <a href="#">
+                <img  src="./static/image/house-category.jpg" class="img-fluid category-image-holder">
+              </a>
+              <div class="category-title">
+                <a href="#">
+                  <h2 style="color:white">House</h2>
+                </a>
+              </div>
+          </div>
+          </div>
+
+          <div class="col-lg-3 col-md-4 col-4 thumb py-2">
+            <div class="category-thumbnail text-center"  style="overflow:hidden">
+              <a href="#">
+                <img  src="./static/image/vocal-category.jpg" class="img-fluid category-image-holder">
+              </a>
+              <div class="category-title">
+                <a href="#">
+                  <h2 style="color:white">Vocal</h2>
+                </a>
+              </div>
+          </div>
+          </div>
+
+          <div class="col-lg-3 col-md-4 col-4 thumb py-2">
+            <div class="category-thumbnail text-center"  style="overflow:hidden">
+              <a href="#">
+                <img  src="./static/image/country-category.jpg" class="img-fluid category-image-holder">
+              </a>
+              <div class="category-title">
+                <a href="#">
+                  <h2 style="color:white">Country</h2>
+                </a>
+              </div>
+          </div>
+          </div>
+          </div>
+     </div>
+
+     <footer class="bg-dark">
+			<div class="container pt-5">
+				<div class="row justify-content-center">
+					<div class="col-md-12 text-center">
+						<a href="index.html" class="navbar-brand">
+              <img src="./static/image/logowhite-01.png" style="max-height:5vh">
+            </a>
+						<div class="pt-3 footer-links">
+							<a href="index.html" class="px-3">HOME</a>
+							<a href="#trending" class="px-3">BROWSE</a>
+							<a href="#create" class="px-3" data-toggle="modal" data-target="#create">CREATE</a>
+              <a href="#bookings" class="px-3" data-toggle="modal" data-target="#bookings">BOOKINGS</a>
+						</div>
+            </ul>
+					</div>
+				</div>
+				<div class="row mt-4">
+					<div class="col-md-12 text-center">
+						<p class="text-black">
+					  This is a website made for QUT IAB207 Assignment 2 by Jasper Hazlett. All images from <a href="https://unsplash.com" target="_blank">Unsplash</a>.</p>
+					</div>
+				</div>
+			</div>
+		</footer>
+
+    <div class="modal fade" id="bookings" tabindex="-1" aria-labelledby="bookingsLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="bookingsLabel">My Bookings</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="row border-bottom py-3">
+              <div class="col-sm-4">
+                <img src="./static/image/1ic1200.jpg" width="250vw" class="justify-content-center">
+              </div>
+              <div class="col-sm-8">
+                <h5>One Thousand Inch Cats</h4>
+                <p><b>New Single Release: Bathtub Kicking</b><br>Saturday, 18 June 2022<br><i>Riverstage</i><p>
+                <p><span class="badge badge-success">Booked</span>   <span class="badge badge-dark">Rock</span></p>
+                <a href="eventpage.html">View event details >></a>
+              </div>
+            </div>
+            <div class="row border-bottom py-3">
+              <div class="col-sm-4">
+                <img src="./image/tgb1200.jpg" width="250vw" class="justify-content-center">
+              </div>
+              <div class="col-sm-8">
+                <h5>The Greasy Balloons</h4>
+                <p><b>Headlining at the Triffid</b><br>Tuesday, 25 May 2022<br><i>The Triffid</i><p>
+                <p><span class="badge badge-danger">Cancelled</span>   <span class="badge badge-dark">House</span></p>
+                <a href="eventpage.html">View event details >></a>
+              </div>
+            </div>
+            <div class="row border-bottom py-3">
+              <div class="col-sm-4">
+                <img src="./static/image/tdg1200.jpg" width="250vw" class="justify-content-center">
+              </div>
+              <div class="col-sm-8">
+                <h5>Deaf Gerbils</h4>
+                <p><b>Prague State of Mind Album Promo Tour</b><br>Sunday, 29 May 2022<br><i>Prohibition</i><p>
+                <p><span class="badge badge-success">Booked</span>   <span class="badge badge-dark">Hip Hop</span></p>
+                <a href="eventpage.html">View event details >></a>
+              </div>
+            </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+
+      <div class="modal fade" id="create" tabindex="-1" role="dialog" aria-labelledby="createLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="create">Create an event</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form>
+                <div class="form-group">
+                  <label for="imageUpload">Upload an image</label>
+                  <input type="file" class="form-control-file" id="imageUpload">
+                </div>
+                <div class="form-group">
+                  <label for="titleEntry">Title</label>
+                  <input class="form-control form-control-lg" id="titleEntry" type="text" placeholder="Enter a title">
+                </div>
+                <div class="form-group">
+                  <label for="locationEntry">Location</label>
+                  <textarea class="form-control" id="locationEntry" rows="4" placeholder="Enter the location's address"></textarea>
+                </div>
+                <p>Date</p>
+                <div class="form-row">
+                  <div class="col-2">
+                    <label for="dayDateSelect">Day</label>
+                      <select class="form-control" id="dayDateSelect">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                        <option>6</option>
+                        <option>7</option>
+                        <option>8</option>
+                        <option>9</option>
+                        <option>10</option>
+                        <option>11</option>
+                        <option>12</option>
+                        <option>13</option>
+                        <option>14</option>
+                        <option>15</option>
+                        <option>16</option>
+                        <option>17</option>
+                        <option>18</option>
+                        <option>19</option>
+                        <option>20</option>
+                        <option>21</option>
+                        <option>22</option>
+                        <option>23</option>
+                        <option>24</option>
+                        <option>25</option>
+                        <option>26</option>
+                        <option>27</option>
+                        <option>28</option>
+                        <option>29</option>
+                        <option>30</option>
+                        <option>31</option>
+                      </select>
+                  </div>
+                  <div class="col-3">
+                    <label for="monthDateSelect">Month</label>
+                      <select class="form-control" id="monthDateSelect">
+                        <option>January</option>
+                        <option>February</option>
+                        <option>March</option>
+                        <option>April</option>
+                        <option>May</option>
+                        <option>June</option>
+                        <option>July</option>
+                        <option>August</option>
+                        <option>September</option>
+                        <option>October</option>
+                        <option>November</option>
+                        <option>December</option>
+                      </select>
+                  </div>
+                  <div class="col-3">
+                    <label for="yearDateSelect">Year</label>
+                      <select class="form-control" id="yearDateSelect">
+                        <option>2022</option>
+                        <option>2023</option>
+                        <option>2024</option>
+                        <option>2025</option>
+                      </select>
+                  </div>
+                </div>
+                <label for="categorySelect">Category</label>
+                      <select class="form-control" id="monthDateSelect">
+                        <option>Rock</option>
+                        <option>Pop</option>
+                        <option>Jazz</option>
+                        <option>Classical</option>
+                        <option>Country</option>
+                        <option>Hip Hop</option>
+                        <option>Electronic</option>
+                        <option>Heavy Metal</option>
+                        <option>Dance</option>
+                        <option>Indie</option>
+                        <option>House</option>
+                        <option>Vocal</option>
+                      </select>
+                <div class="form-group pt-3">
+                  <label for="locationEntry">Description</label>
+                  <textarea class="form-control" id="locationEntry" rows="4" placeholder="What's happening at your event"></textarea>
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Post</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      
+    <div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="signupModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="signupModalLabel">Sign Up</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="form-group row">
+                <label for="inputEmail3" class="col-sm-2 col-form-label">First Name</label>
+                <div class="col-sm-10">
+                  <input type="email" class="form-control" id="inputEmail3" placeholder="First Name">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="inputEmail3" class="col-sm-2 col-form-label">Last Name</label>
+                <div class="col-sm-10">
+                  <input type="email" class="form-control" id="inputEmail3" placeholder="Last Name">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="inputEmail3" class="col-sm-2 col-form-label">Date of Birth</label>
+                <div class="col-sm-2">
+                  <label for="dayDOBSelect">Day</label>
+                    <select class="form-control" id="dayDOBSelect">
+                      <option>1</option>
+                      <option>2</option>
+                      <option>3</option>
+                      <option>4</option>
+                      <option>5</option>
+                      <option>6</option>
+                      <option>7</option>
+                      <option>8</option>
+                      <option>9</option>
+                      <option>10</option>
+                      <option>11</option>
+                      <option>12</option>
+                      <option>13</option>
+                      <option>14</option>
+                      <option>15</option>
+                      <option>16</option>
+                      <option>17</option>
+                      <option>18</option>
+                      <option>19</option>
+                      <option>20</option>
+                      <option>21</option>
+                      <option>22</option>
+                      <option>23</option>
+                      <option>24</option>
+                      <option>25</option>
+                      <option>26</option>
+                      <option>27</option>
+                      <option>28</option>
+                      <option>29</option>
+                      <option>30</option>
+                      <option>31</option>
+                    </select>
+                </div>
+                <div class="col-sm-3">
+                  <label for="monthDOBSelect">Month</label>
+                    <select class="form-control" id="monthDOBSelect">
+                      <option>January</option>
+                      <option>February</option>
+                      <option>March</option>
+                      <option>April</option>
+                      <option>May</option>
+                      <option>June</option>
+                      <option>July</option>
+                      <option>August</option>
+                      <option>September</option>
+                      <option>October</option>
+                      <option>November</option>
+                      <option>December</option>
+                    </select>
+                </div>
+                <div class="col-sm-3">
+                  <label for="yearDOBSelect">Year</label>
+                    <select class="form-control" id="yearDOBSelect">
+                      <option>2004</option>
+                      <option>2003</option>
+                      <option>2002</option>
+                      <option>2001</option>
+                      <option>2000</option>
+                      <option>1999</option>
+                      <option>1998</option>
+                      <option>1997</option>
+                      <option>1996</option>
+                      <option>1995</option>
+                      <option>1994</option>
+                      <option>1993</option>
+                      <option>1992</option>
+                      <option>1991</option>
+                      <option>1990</option>
+                      <option>1989</option>
+                      <option>1988</option>
+                      <option>1987</option>
+                      <option>1986</option>
+                      <option>1985</option>
+                      <option>1984</option>
+                      <option>1983</option>
+                      <option>1982</option>
+                      <option>1981</option>
+                      <option>1980</option>
+                      <option>1979</option>
+                      <option>1978</option>
+                      <option>1977</option>
+                    </select>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
+                <div class="col-sm-10">
+                  <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="inputPassword3" class="col-sm-2 col-form-label">Password</label>
+                <div class="col-sm-10">
+                  <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Sign up</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="loginModalLabel">Sign in</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="form-group row">
+                <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
+                <div class="col-sm-10">
+                  <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="inputPassword3" class="col-sm-2 col-form-label">Password</label>
+                <div class="col-sm-10">
+                  <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+                </div>
+              </div>
+              <div class="form-group row">
+                <div class="col-sm-2"></div>
+                <div class="col-sm-10">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="gridCheck1">
+                    <label class="form-check-label" for="gridCheck1">
+                      Remember Me
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Sign in</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>
