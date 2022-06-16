@@ -54,3 +54,21 @@ class Comment(db.Model):
     def __repr__(self):
         return "<Comment: {}>".format(self.text)
 
+
+ #Creating a booking table to save User ID and Event ID to create a booking. (THIN HTET SAN)       
+class Booking(db.Model):
+    __tablename__ = 'bookings'
+    id = db.Column(db.Integer, primary_key=True)
+    ticketno = db.Column(db.Integer, nullable=False)
+
+    #Foreign Key To Connect With Event And User
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    user = db.relationship("User", backref=backref("user", uselist=False))
+
+    event_id = db.Column(db.Integer, db.ForeignKey('event.id'))
+    event = db.relationship("Event", backref=backref("event", uselist=False))
+
+    #To save the create time of the record
+    created_at = db.Column(db.DateTime, default=datetime.now())
+
+
